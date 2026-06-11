@@ -232,6 +232,46 @@ Bicicleta MONTAÑA, estimada 2h, devuelta a las 3h 20min:
 
 ---
 
+
+## Despliegue en nube
+
+El proyecto está configurado y listo para despliegue en cualquier plataforma cloud.
+
+**Perfil de producción:** `application-prod.properties` configurado con PostgreSQL y variables de entorno.
+
+**Variables de entorno requeridas:**
+
+| Variable | Descripción |
+|---|---|
+| `DATABASE_URL` | URL de conexión PostgreSQL |
+| `API_KEY` | Clave de seguridad de la API |
+| `SPRING_PROFILES_ACTIVE` | Valor: `prod` |
+
+**Comandos de despliegue:**
+
+```bash
+# Build
+./mvnw clean package -DskipTests
+ 
+# Start
+java -Dspring.profiles.active=prod -jar target/bicicletas-0.0.1-SNAPSHOT.jar
+```
+
+Compatible con Railway, Render, Heroku, o cualquier plataforma que soporte Java 17.
+
+> **Nota:** El despliegue en nube no fue completado durante el desarrollo de esta
+> prueba debido a limitaciones de las plataformas gratuitas evaluadas: Render no
+> soporta Java nativamente en su plan free, Railway tenía créditos agotados, y
+> Koyeb requiere tarjeta de crédito. La aplicación usa H2 en memoria y puede
+> desplegarse sin base de datos externa  simplemente clonando el repositorio y
+> ejecutando `./mvnw spring-boot:run`. Para producción con persistencia real,
+> el perfil `prod` con PostgreSQL está configurado y listo.
+ 
+---
+
+
+
+
 ## Manejo de errores
 
 Todos los errores devuelven JSON con esta estructura:
