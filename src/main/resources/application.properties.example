@@ -1,0 +1,24 @@
+# Puerto
+server.port=8080
+
+# H2 en memoria
+spring.datasource.url=jdbc:h2:mem:bicicletasdb
+spring.datasource.driver-class-name=org.h2.Driver
+spring.datasource.username=sa
+spring.datasource.password=
+
+# JPA
+spring.jpa.database-platform=org.hibernate.dialect.H2Dialect
+spring.jpa.hibernate.ddl-auto=create-drop
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.format_sql=true
+
+# H2 Console
+spring.h2.console.enabled=true
+spring.h2.console.path=/h2-console
+
+# Nombre
+spring.application.name=bicicletas-api
+
+# Seguridad — cambia este valor
+api.key=TU_API_KEY_AQUI
